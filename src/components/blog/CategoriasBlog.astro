@@ -1,0 +1,159 @@
+---
+const categorias = [
+	{ nombre: "Reflexiones", cantidad: 12, icono: "📖", color: "bg-blue-100 text-blue-800" },
+	{ nombre: "Comunidad", cantidad: 8, icono: "👥", color: "bg-purple-100 text-purple-800" },
+	{ nombre: "Jóvenes", cantidad: 15, icono: "🌟", color: "bg-yellow-100 text-yellow-800" },
+	{ nombre: "Familia", cantidad: 10, icono: "👨‍👩‍👧‍👦", color: "bg-green-100 text-green-800" },
+	{ nombre: "Testimonios", cantidad: 6, icono: "💭", color: "bg-pink-100 text-pink-800" },
+	{ nombre: "Eventos", cantidad: 9, icono: "📅", color: "bg-red-100 text-red-800" },
+	{ nombre: "Noticias", cantidad: 7, icono: "📰", color: "bg-indigo-100 text-indigo-800" },
+	{ nombre: "Oración", cantidad: 11, icono: "🙏", color: "bg-teal-100 text-teal-800" }
+];
+
+const tagsPopulares = [
+	{ nombre: "Fe", color: "bg-blue-50 text-blue-700" },
+	{ nombre: "Esperanza", color: "bg-purple-50 text-purple-700" },
+	{ nombre: "Amor", color: "bg-pink-50 text-pink-700" },
+	{ nombre: "Familia", color: "bg-green-50 text-green-700" },
+	{ nombre: "Comunidad", color: "bg-yellow-50 text-yellow-700" },
+	{ nombre: "Jóvenes", color: "bg-indigo-50 text-indigo-700" },
+	{ nombre: "Oración", color: "bg-teal-50 text-teal-700" },
+	{ nombre: "Biblia", color: "bg-red-50 text-red-700" },
+	{ nombre: "Servicio", color: "bg-orange-50 text-orange-700" },
+	{ nombre: "Adoración", color: "bg-cyan-50 text-cyan-700" }
+];
+---
+
+<div class="space-y-8">
+	<!-- Categorías -->
+	<div class="bg-white rounded-xl shadow-md p-6">
+		<h3 class="text-xl font-bold text-gray-900 mb-4">Categorías</h3>
+		<ul class="space-y-3">
+			{categorias.map((categoria) => (
+				<li>
+					<a
+						href="#"
+						class="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors group"
+					>
+						<div class="flex items-center gap-3">
+							<span class="text-2xl">{categoria.icono}</span>
+							<span class="text-gray-700 group-hover:text-blue-600 transition-colors">
+								{categoria.nombre}
+							</span>
+						</div>
+						<span class={`${categoria.color} px-3 py-1 rounded-full text-sm font-medium`}>
+							{categoria.cantidad}
+						</span>
+					</a>
+				</li>
+			))}
+		</ul>
+	</div>
+
+	<!-- Tags Populares -->
+	<div class="bg-white rounded-xl shadow-md p-6">
+		<h3 class="text-xl font-bold text-gray-900 mb-4">Tags Populares</h3>
+		<div class="flex flex-wrap gap-2">
+			{tagsPopulares.map((tag) => (
+				<a
+					href="#"
+					class={`${tag.color} px-3 py-1 rounded-full text-sm hover:opacity-80 transition-opacity`}
+				>
+					{tag.nombre}
+				</a>
+			))}
+		</div>
+	</div>
+
+	<!-- Posts Populares -->
+	<div class="bg-white rounded-xl shadow-md p-6">
+		<h3 class="text-xl font-bold text-gray-900 mb-4">Posts Populares</h3>
+		<ul class="space-y-4">
+			<li>
+				<a href="#" class="flex items-center space-x-3 hover:text-blue-600 transition-colors group">
+					<div class="w-16 h-16 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+						</svg>
+					</div>
+					<div>
+						<h4 class="font-medium text-gray-900 group-hover:text-blue-600">El Poder de la Oración</h4>
+						<p class="text-sm text-gray-500">15 de Marzo, 2024</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="flex items-center space-x-3 hover:text-blue-600 transition-colors group">
+					<div class="w-16 h-16 rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+						</svg>
+					</div>
+					<div>
+						<h4 class="font-medium text-gray-900 group-hover:text-blue-600">Construyendo Comunidad</h4>
+						<p class="text-sm text-gray-500">10 de Marzo, 2024</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="flex items-center space-x-3 hover:text-blue-600 transition-colors group">
+					<div class="w-16 h-16 rounded-lg bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+						</svg>
+					</div>
+					<div>
+						<h4 class="font-medium text-gray-900 group-hover:text-blue-600">Jóvenes y Fe</h4>
+						<p class="text-sm text-gray-500">5 de Marzo, 2024</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- Archivo -->
+	<div class="bg-white rounded-xl shadow-md p-6">
+		<h3 class="text-xl font-bold text-gray-900 mb-4">Archivo</h3>
+		<ul class="space-y-2">
+			<li>
+				<a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600 transition-colors group">
+					<div class="flex items-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+						</svg>
+						<span>Marzo 2024</span>
+					</div>
+					<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-sm group-hover:bg-blue-50 group-hover:text-blue-600">
+						12
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600 transition-colors group">
+					<div class="flex items-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+						</svg>
+						<span>Febrero 2024</span>
+					</div>
+					<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-sm group-hover:bg-blue-50 group-hover:text-blue-600">
+						8
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600 transition-colors group">
+					<div class="flex items-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+						</svg>
+						<span>Enero 2024</span>
+					</div>
+					<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-sm group-hover:bg-blue-50 group-hover:text-blue-600">
+						15
+					</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div> 
