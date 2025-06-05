@@ -1,0 +1,166 @@
+---
+interface Ministerio {
+  titulo: string;
+  descripcion: string;
+  objetivo: string;
+  horario: string;
+  lugar: string;
+  icono: string;
+  color: string;
+  imagen: string;
+}
+
+const ministerios: Ministerio[] = [
+  {
+    titulo: "Ministerio de Alabanza",
+    descripcion: "Guiamos la adoración y alabanza en nuestros servicios, creando un ambiente propicio para la presencia de Dios.",
+    objetivo: "Llevar a la congregación a una experiencia profunda de adoración y comunión con Dios.",
+    horario: "Ensayo: Sábados 4:00 PM",
+    lugar: "Templo Principal",
+    icono: "music_note",
+    color: "bg-blue-100 text-blue-800",
+    imagen: "/images/ministerios/alabanza.webp"
+  },
+  {
+    titulo: "Ministerio de Jóvenes",
+    descripcion: "Un espacio dinámico donde los jóvenes pueden crecer en su fe, desarrollar amistades y servir a Dios.",
+    objetivo: "Formar líderes jóvenes comprometidos con Cristo y su iglesia.",
+    horario: "Reunión: Sábados 6:00 PM",
+    lugar: "Salón de Jóvenes",
+    icono: "groups",
+    color: "bg-green-100 text-green-800",
+    imagen: "/images/ministerios/jovenes.webp"
+  },
+  {
+    titulo: "Escuela Dominical",
+    descripcion: "Enseñanza bíblica para todas las edades, desde niños hasta adultos, con un enfoque práctico y relevante.",
+    objetivo: "Discipular a los miembros de la iglesia a través del estudio sistemático de la Palabra de Dios.",
+    horario: "Clases: Domingos 9:00 AM",
+    lugar: "Aulas de Clase",
+    icono: "school",
+    color: "bg-yellow-100 text-yellow-800",
+    imagen: "/images/ministerios/escuela.webp"
+  },
+  {
+    titulo: "Ministerio de Oración",
+    descripcion: "Dedicados a la intercesión y la oración por las necesidades de la iglesia y la comunidad.",
+    objetivo: "Cubrir en oración todas las áreas de la iglesia y las necesidades de la congregación.",
+    horario: "Reunión: Martes 6:00 PM",
+    lugar: "Capilla de Oración",
+    icono: "volunteer_activism",
+    color: "bg-red-100 text-red-800",
+    imagen: "/images/ministerios/oracion.webp"
+  },
+  {
+    titulo: "Ministerio de Niños",
+    descripcion: "Enseñamos a los niños sobre el amor de Dios de manera divertida y significativa.",
+    objetivo: "Formar una base sólida de fe en los niños y sus familias.",
+    horario: "Actividades: Domingos 10:00 AM",
+    lugar: "Salón de Niños",
+    icono: "child_care",
+    color: "bg-purple-100 text-purple-800",
+    imagen: "/images/ministerios/ninos.webp"
+  },
+  {
+    titulo: "Ministerio de Misiones",
+    descripcion: "Extendemos el amor de Dios más allá de nuestras fronteras a través de proyectos misioneros.",
+    objetivo: "Llevar el evangelio a todas las naciones y apoyar a misioneros en el campo.",
+    horario: "Reunión: Primer Sábado 5:00 PM",
+    lugar: "Salón de Misiones",
+    icono: "public",
+    color: "bg-indigo-100 text-indigo-800",
+    imagen: "/images/ministerios/misiones.webp"
+  }
+];
+---
+
+<section class="relative bg-gradient-to-br from-slate-50 to-blue-50 py-20">
+  <!-- Patrón de fondo sutil -->
+  <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px]"></div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <!-- Encabezado -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Nuestros Ministerios</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Descubre las diferentes áreas de servicio donde puedes crecer y contribuir.
+        </p>
+      </div>
+
+      <!-- Grid de Ministerios -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {ministerios.map((ministerio) => (
+          <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <div class="relative h-48">
+              <img 
+                src={ministerio.imagen} 
+                alt={ministerio.titulo}
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <div class={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${ministerio.color} backdrop-blur-sm`}>
+                  <span class="material-icons">{ministerio.icono}</span>
+                  <span class="font-medium">{ministerio.titulo}</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-600 mb-4">{ministerio.descripcion}</p>
+              <div class="space-y-3">
+                <div class="flex items-center gap-2 text-gray-600">
+                  <span class="material-icons text-gray-400">schedule</span>
+                  <span>{ministerio.horario}</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-600">
+                  <span class="material-icons text-gray-400">location_on</span>
+                  <span>{ministerio.lugar}</span>
+                </div>
+              </div>
+              <div class="mt-6 pt-6 border-t border-gray-100">
+                <h4 class="font-semibold text-gray-900 mb-2">Objetivo:</h4>
+                <p class="text-gray-600">{ministerio.objetivo}</p>
+              </div>
+              <button class="mt-6 w-full px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300">
+                Unirse al Ministerio
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Call to Action -->
+      <div class="mt-20 bg-white rounded-3xl p-12 shadow-xl">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">¿Quieres Servir?</h2>
+          <p class="text-gray-600 mb-8">
+            Cada uno de nosotros tiene dones y talentos únicos que podemos usar para servir a Dios y a nuestra comunidad.
+            ¡Únete a nosotros y descubre tu propósito!
+          </p>
+          <button class="px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300">
+            Contáctanos para Servir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animación suave para los elementos */
+  .flex {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style> 
