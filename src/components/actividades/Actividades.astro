@@ -1,3 +1,83 @@
+---
+interface Actividad {
+  titulo: string;
+  descripcion: string;
+  horario: string;
+  lugar: string;
+  categoria: string;
+  icono: string;
+  color: string;
+  destacado?: boolean;
+}
+
+interface Categoria {
+  nombre: string;
+  icono: string;
+  color: string;
+}
+
+const actividades: Actividad[] = [
+  {
+    titulo: "Culto Dominical",
+    descripcion: "Nuestro servicio principal de adoración y predicación.",
+    horario: "Domingos 10:00 AM",
+    lugar: "Templo Principal",
+    categoria: "Cultos",
+    icono: "church",
+    color: "bg-blue-100 text-blue-800",
+    destacado: true
+  },
+  {
+    titulo: "Estudio Bíblico",
+    descripcion: "Profundiza en la Palabra de Dios con nuestro grupo de estudio.",
+    horario: "Miércoles 7:00 PM",
+    lugar: "Sala de Estudio",
+    categoria: "Estudios",
+    icono: "menu_book",
+    color: "bg-purple-100 text-purple-800",
+    destacado: true
+  },
+  {
+    titulo: "Grupo de Jóvenes",
+    descripcion: "Encuentros semanales para jóvenes con actividades y enseñanza.",
+    horario: "Sábados 4:00 PM",
+    lugar: "Salón de Jóvenes",
+    categoria: "Jóvenes",
+    icono: "groups",
+    color: "bg-green-100 text-green-800",
+    destacado: true
+  },
+  {
+    titulo: "Escuela Dominical",
+    descripcion: "Clases bíblicas para todas las edades.",
+    horario: "Domingos 9:00 AM",
+    lugar: "Aulas de Clase",
+    categoria: "Educación",
+    icono: "school",
+    color: "bg-yellow-100 text-yellow-800"
+  },
+  {
+    titulo: "Grupo de Oración",
+    descripcion: "Momento de intercesión y comunión con Dios.",
+    horario: "Martes 6:00 PM",
+    lugar: "Capilla de Oración",
+    categoria: "Oración",
+    icono: "volunteer_activism",
+    color: "bg-red-100 text-red-800"
+  },
+  {
+    titulo: "Ensamble Musical",
+    descripcion: "Práctica del grupo de alabanza y adoración.",
+    horario: "Viernes 7:00 PM",
+    lugar: "Salón de Música",
+    categoria: "Música",
+    icono: "music_note",
+    color: "bg-indigo-100 text-indigo-800"
+  }
+];
+
+---
+
 <section class="relative bg-gradient-to-br from-slate-50 to-blue-50 py-20">
   <!-- Patrón de fondo sutil -->
   <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px]"></div>
@@ -12,294 +92,92 @@
         </p>
       </div>
 
-      <!-- Filtros -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
-        <button class="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300">
-          Todas
-        </button>
-        <button class="px-6 py-3 bg-white text-gray-700 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-          Cultos
-        </button>
-        <button class="px-6 py-3 bg-white text-gray-700 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-          Grupos
-        </button>
-        <button class="px-6 py-3 bg-white text-gray-700 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-          Eventos
-        </button>
-        <button class="px-6 py-3 bg-white text-gray-700 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-          Jóvenes
-        </button>
-      </div>
-
-      <!-- Grid de Actividades -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Culto Dominical -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-          <div class="relative mb-6">
-            <div class="aspect-w-16 aspect-h-9 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600"></div>
-            <div class="absolute top-4 left-4">
-              <span class="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-blue-600">
-                Culto
-              </span>
-            </div>
+      <!-- Search and Filter Section -->
+      <div class="mb-12 flex flex-col md:flex-row gap-6 items-center justify-between">
+        <div class="w-full md:w-96">
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Buscar actividades..."
+              class="w-full px-4 py-3 pl-12 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</span>
           </div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-3">Culto Dominical</h2>
-          <p class="text-gray-600 mb-4">
-            Únete a nosotros en nuestro servicio dominical para adorar y aprender de la Palabra de Dios.
-          </p>
-          <div class="flex items-center gap-4 text-sm text-gray-500 mb-6">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Domingo 9:00 AM</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Salón Principal</span>
-            </div>
-          </div>
-          <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300">
-            Más información
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Estudio Bíblico -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-          <div class="relative mb-6">
-            <div class="aspect-w-16 aspect-h-9 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600"></div>
-            <div class="absolute top-4 left-4">
-              <span class="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-indigo-600">
-                Grupo
-              </span>
-            </div>
-          </div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-3">Estudio Bíblico</h2>
-          <p class="text-gray-600 mb-4">
-            Profundiza en la Palabra de Dios a través de nuestro estudio bíblico semanal.
-          </p>
-          <div class="flex items-center gap-4 text-sm text-gray-500 mb-6">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Miércoles 7:00 PM</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Sala de Estudio</span>
-            </div>
-          </div>
-          <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300">
-            Más información
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Jóvenes -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-          <div class="relative mb-6">
-            <div class="aspect-w-16 aspect-h-9 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600"></div>
-            <div class="absolute top-4 left-4">
-              <span class="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-purple-600">
-                Jóvenes
-              </span>
-            </div>
-          </div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-3">Grupo de Jóvenes</h2>
-          <p class="text-gray-600 mb-4">
-            Un espacio para jóvenes donde compartimos, aprendemos y crecemos juntos en la fe.
-          </p>
-          <div class="flex items-center gap-4 text-sm text-gray-500 mb-6">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Viernes 7:00 PM</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Salón de Jóvenes</span>
-            </div>
-          </div>
-          <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300">
-            Más información
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Escuela Dominical -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-          <div class="relative mb-6">
-            <div class="aspect-w-16 aspect-h-9 rounded-2xl bg-gradient-to-br from-green-500 to-green-600"></div>
-            <div class="absolute top-4 left-4">
-              <span class="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-green-600">
-                Educación
-              </span>
-            </div>
-          </div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-3">Escuela Dominical</h2>
-          <p class="text-gray-600 mb-4">
-            Clases bíblicas para todas las edades, desde niños hasta adultos.
-          </p>
-          <div class="flex items-center gap-4 text-sm text-gray-500 mb-6">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Domingo 10:00 AM</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Salones de Clase</span>
-            </div>
-          </div>
-          <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300">
-            Más información
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Alabanza -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-          <div class="relative mb-6">
-            <div class="aspect-w-16 aspect-h-9 rounded-2xl bg-gradient-to-br from-red-500 to-red-600"></div>
-            <div class="absolute top-4 left-4">
-              <span class="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-red-600">
-                Música
-              </span>
-            </div>
-          </div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-3">Grupo de Alabanza</h2>
-          <p class="text-gray-600 mb-4">
-            Únete a nuestro equipo de alabanza y adora a Dios a través de la música.
-          </p>
-          <div class="flex items-center gap-4 text-sm text-gray-500 mb-6">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Sábado 4:00 PM</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Salón de Ensayo</span>
-            </div>
-          </div>
-          <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300">
-            Más información
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Oración -->
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-          <div class="relative mb-6">
-            <div class="aspect-w-16 aspect-h-9 rounded-2xl bg-gradient-to-br from-yellow-500 to-yellow-600"></div>
-            <div class="absolute top-4 left-4">
-              <span class="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-yellow-600">
-                Oración
-              </span>
-            </div>
-          </div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-3">Grupo de Oración</h2>
-          <p class="text-gray-600 mb-4">
-            Un tiempo especial para orar y buscar la presencia de Dios juntos.
-          </p>
-          <div class="flex items-center gap-4 text-sm text-gray-500 mb-6">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Martes 7:00 PM</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Capilla</span>
-            </div>
-          </div>
-          <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300">
-            Más información
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
         </div>
       </div>
 
-      <!-- Calendario de Eventos -->
-      <div class="mt-20">
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Próximos Eventos</h2>
-        <div class="bg-white rounded-3xl p-8 shadow-xl">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Evento 1 -->
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-20 h-20 bg-blue-100 rounded-xl flex flex-col items-center justify-center">
-                <span class="text-2xl font-bold text-blue-600">15</span>
-                <span class="text-sm text-blue-600">Jun</span>
+      <!-- Actividades Destacadas -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Actividades Destacadas</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {actividades.filter(a => a.destacado).map((actividad) => (
+            <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <div class="flex items-center gap-4 mb-6">
+                <div class={`w-16 h-16 rounded-full ${actividad.color} flex items-center justify-center`}>
+                  <span class="material-icons text-3xl">{actividad.icono}</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900">{actividad.titulo}</h3>
+                  <p class="text-gray-600">{actividad.categoria}</p>
+                </div>
               </div>
-              <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-1">Conferencia de Jóvenes</h3>
-                <p class="text-sm text-gray-600">Un fin de semana especial para jóvenes</p>
-                <p class="text-sm text-gray-500 mt-2">9:00 AM - 5:00 PM</p>
+              <p class="text-gray-600 mb-6">{actividad.descripcion}</p>
+              <div class="space-y-3">
+                <div class="flex items-center gap-2 text-gray-600">
+                  <span class="material-icons text-gray-400">schedule</span>
+                  <span>{actividad.horario}</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-600">
+                  <span class="material-icons text-gray-400">location_on</span>
+                  <span>{actividad.lugar}</span>
+                </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
 
-            <!-- Evento 2 -->
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-20 h-20 bg-green-100 rounded-xl flex flex-col items-center justify-center">
-                <span class="text-2xl font-bold text-green-600">20</span>
-                <span class="text-sm text-green-600">Jun</span>
+      <!-- Todas las Actividades -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Todas las Actividades</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {actividades.map((actividad) => (
+            <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <div class="flex items-center gap-4 mb-6">
+                <div class={`w-16 h-16 rounded-full ${actividad.color} flex items-center justify-center`}>
+                  <span class="material-icons text-3xl">{actividad.icono}</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900">{actividad.titulo}</h3>
+                  <p class="text-gray-600">{actividad.categoria}</p>
+                </div>
               </div>
-              <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-1">Cena Familiar</h3>
-                <p class="text-sm text-gray-600">Comparte con la familia de la iglesia</p>
-                <p class="text-sm text-gray-500 mt-2">6:00 PM - 9:00 PM</p>
+              <p class="text-gray-600 mb-6">{actividad.descripcion}</p>
+              <div class="space-y-3">
+                <div class="flex items-center gap-2 text-gray-600">
+                  <span class="material-icons text-gray-400">schedule</span>
+                  <span>{actividad.horario}</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-600">
+                  <span class="material-icons text-gray-400">location_on</span>
+                  <span>{actividad.lugar}</span>
+                </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
 
-            <!-- Evento 3 -->
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-20 h-20 bg-purple-100 rounded-xl flex flex-col items-center justify-center">
-                <span class="text-2xl font-bold text-purple-600">25</span>
-                <span class="text-sm text-purple-600">Jun</span>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-1">Concierto de Alabanza</h3>
-                <p class="text-sm text-gray-600">Noche especial de adoración</p>
-                <p class="text-sm text-gray-500 mt-2">7:00 PM - 9:00 PM</p>
-              </div>
-            </div>
-          </div>
+      <!-- Call to Action -->
+      <div class="bg-white rounded-3xl p-12 shadow-xl">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">¿Quieres Participar?</h2>
+          <p class="text-gray-600 mb-8">
+            Únete a nuestras actividades y forma parte de nuestra comunidad. ¡Te esperamos!
+          </p>
+          <button class="px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300">
+            Contactar Organización
+          </button>
         </div>
       </div>
     </div>
@@ -322,4 +200,4 @@
       transform: translateY(0);
     }
   }
-</style> 
+</style>
