@@ -1,0 +1,104 @@
+---
+// Dummy data for recent recordings
+const grabacionesRecientes = [
+  {
+    id: 1,
+    titulo: "Mensaje Dominical: Esperanza en Tiempos Inciertos",
+    predicador: "Pastor Juan Pérez",
+    fecha: "2024-05-19",
+    audioUrl: "#placeholder-audio-1" // Replace with actual audio URL
+  },
+  {
+    id: 2,
+    titulo: "Estudio Bíblico: Romanos 8",
+    predicador: "Hermana María Rodríguez",
+    fecha: "2024-05-15",
+    audioUrl: "#placeholder-audio-2" // Replace with actual audio URL
+  },
+   {
+    id: 3,
+    titulo: "Oración de Martes: Fortaleza en la Fe",
+    predicador: "Equipo de Oración",
+    fecha: "2024-05-14",
+    audioUrl: "#placeholder-audio-3" // Replace with actual audio URL
+  }
+];
+
+interface Grabacion {
+    id: number;
+    titulo: string;
+    predicador: string;
+    fecha: string;
+    audioUrl: string;
+}
+
+---
+
+<div class="bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl p-8 animate-fadeInRight h-full flex flex-col">
+   <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+     <span class="material-icons text-purple-600 text-3xl">library_music</span>
+    Grabaciones Recientes
+  </h3>
+  
+  <!-- Placeholder para Reproductor de Grabaciones -->
+   <div class="w-full bg-gray-800 rounded-xl p-4 flex items-center justify-between gap-4 mb-6 shadow-inner">
+      <span class="material-icons text-white text-4xl">play_circle_filled</span>
+      <div class="flex-1">
+         <p class="font-semibold text-white">Selecciona una grabación para reproducir</p>
+         <p class="text-sm text-gray-400">Predicador | Fecha</p>
+      </div>
+       <span class="material-icons text-white">volume_up</span>
+   </div>
+
+  <!-- Lista de Grabaciones -->
+   <div class="flex-grow space-y-4 overflow-y-auto pr-2 custom-scrollbar">
+      {grabacionesRecientes.map((grabacion) => (
+        <div class="p-4 bg-gray-100 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-gray-200 transition">
+           <span class="material-icons text-gray-600">play_circle_outline</span>
+           <div class="flex-1">
+              <p class="font-semibold text-gray-800">{grabacion.titulo}</p>
+              <p class="text-sm text-gray-600">{grabacion.predicador} | {new Date(grabacion.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+           </div>
+           <span class="material-icons text-gray-600">more_vert</span>
+        </div>
+      ))}
+   </div>
+
+   <p class="text-gray-700 mt-6 mb-6">Encuentra mensajes, estudios y programas pasados.</p>
+   <a href="#enlace-a-archivo-grabaciones" class="inline-flex items-center justify-center px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-colors duration-300 shadow-lg font-medium self-start">
+     <span class="material-icons mr-2">archive</span>
+    Ver Archivo Completo
+  </a>
+</div>
+
+<style>
+/* Inherit animations from parent or define here if needed */
+/* @keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-fadeInRight { animation: fadeInRight 0.7s cubic-bezier(.4,0,.2,1) both; } */
+
+.custom-scrollbar {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #a0a0a0 #f1f1f1; /* thumb and track color */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #a0a0a0;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style> 

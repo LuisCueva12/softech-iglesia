@@ -1,0 +1,104 @@
+---
+// Component for displaying radio programs
+
+const programas = [
+  {
+    id: 1,
+    titulo: "Convención Nacional Trujillo",
+    imagen: "/images/programas/programa1.webp" // Placeholder image
+  },
+  {
+    id: 2,
+    titulo: "Convención Nacional Lima",
+    imagen: "/images/programas/programa2.webp" // Placeholder image
+  },
+  {
+    id: 3,
+    titulo: "Cuestión Previa",
+    imagen: "/images/programas/programa3.webp" // Placeholder image
+  },
+  {
+    id: 4,
+    titulo: "Entre Notas",
+    imagen: "/images/programas/programa4.webp" // Placeholder image
+  },
+  {
+    id: 5,
+    titulo: "Hablemos de Salud",
+    imagen: "/images/programas/programa5.webp" // Placeholder image
+  },
+  {
+    id: 6,
+    titulo: "Hora Punta",
+    imagen: "/images/programas/programa6.webp" // Placeholder image
+  }
+];
+
+interface Programa {
+    id: number;
+    titulo: string;
+    imagen: string;
+}
+---
+
+<section class="py-20 relative">
+  <!-- Patrón decorativo -->
+  <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px] pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <!-- Encabezado -->
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center lg:text-left mb-4">
+          Programas Radiales
+        </h2>
+        <p class="text-xl text-gray-600 text-center lg:text-left max-w-2xl">
+          Descubre la variedad de contenido que tenemos para ti.
+        </p>
+      </div>
+
+      <!-- Carrusel/Lista Horizontal de Programas -->
+      <div class="flex overflow-x-auto space-x-6 pb-4 custom-scrollbar-horizontal">
+        {programas.map(programa => (
+          <div class="flex-none w-48 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden cursor-pointer bg-white">
+            <img 
+              src={programa.imagen}
+              alt={programa.titulo}
+              class="w-full h-48 object-cover"
+            />
+            {/* Optional: Add program title overlay or below image */}
+            <div class="p-4 text-center">
+                <p class="text-gray-800 font-semibold text-sm">{programa.titulo}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.custom-scrollbar-horizontal {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #a0a0a0 #f1f1f1; /* thumb and track color */
+}
+
+.custom-scrollbar-horizontal::-webkit-scrollbar {
+  height: 8px;
+}
+
+.custom-scrollbar-horizontal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar-horizontal::-webkit-scrollbar-thumb {
+  background: #a0a0a0;
+  border-radius: 10px;
+}
+
+.custom-scrollbar-horizontal::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style> 

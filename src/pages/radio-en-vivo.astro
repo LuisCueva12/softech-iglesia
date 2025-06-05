@@ -1,5 +1,41 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import RadioVivoSection from '../components/radio/RadioVivoSection.astro';
+import GrabacionesRecientesSection from '../components/radio/GrabacionesRecientesSection.astro';
+import ProgramasRadioSection from '../components/radio/ProgramasRadioSection.astro';
+
+const grabacionesRecientes = [
+  {
+    id: 1,
+    titulo: "Mensaje Dominical: Esperanza en Tiempos Inciertos",
+    predicador: "Pastor Juan Pérez",
+    fecha: "2024-05-19",
+    audioUrl: "#placeholder-audio-1" // Replace with actual audio URL
+  },
+  {
+    id: 2,
+    titulo: "Estudio Bíblico: Romanos 8",
+    predicador: "Hermana María Rodríguez",
+    fecha: "2024-05-15",
+    audioUrl: "#placeholder-audio-2" // Replace with actual audio URL
+  },
+   {
+    id: 3,
+    titulo: "Oración de Martes: Fortaleza en la Fe",
+    predicador: "Equipo de Oración",
+    fecha: "2024-05-14",
+    audioUrl: "#placeholder-audio-3" // Replace with actual audio URL
+  }
+];
+
+interface Grabacion {
+    id: number;
+    titulo: string;
+    predicador: string;
+    fecha: string;
+    audioUrl: string;
+}
+
 ---
 
 <MainLayout title="Radio en Vivo">
@@ -8,32 +44,26 @@ import MainLayout from '../layouts/MainLayout.astro';
     <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px] pointer-events-none"></div>
 
     <div class="container mx-auto px-6 relative z-10 flex flex-col items-center">
+      <!-- Encabezado -->
       <div class="max-w-3xl mx-auto text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Radio en Vivo</h1>
-        <p class="text-xl text-gray-600">Sintoniza nuestra programación las 24 horas</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Radio en Vivo y Contenido Grabado</h1>
+        <p class="text-xl text-gray-600">Sintoniza nuestra transmisión o explora mensajes y programas pasados.</p>
       </div>
 
-      <!-- Reproductor de Radio (Placeholder) -->
-      <div class="w-full max-w-xl bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl p-8 text-center animate-fadeInUp">
-        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-6">
-          <span class="material-icons text-white text-5xl">radio</span>
-        </div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Señal en Vivo</h3>
-        
-        <!-- Aquí iría el código del reproductor de audio, por ejemplo, un iframe -->
-        <div class="bg-gray-200 h-32 rounded-xl flex items-center justify-center text-gray-600 italic">
-          [Espacio para el reproductor de audio en vivo]
-        </div>
+      <!-- Contenido Principal: Live y Grabaciones -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-7xl mb-16">
 
-        <p class="text-gray-700 mt-6 mb-4">Escúchanos desde cualquier dispositivo.</p>
+        <RadioVivoSection />
 
-        <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300 shadow-lg font-medium">
-          <span class="material-icons mr-2">volume_up</span>
-          Abrir Reproductor Externo
-        </a>
+        {/* Passing dummy data to GrabacionesRecientesSection */}
+        <GrabacionesRecientesSection grabaciones={grabacionesRecientes} />
+
       </div>
 
-      <!-- Información Adicional (Opcional) -->
+      {/* Programas Radiales Section */}
+      <ProgramasRadioSection />
+
+       <!-- Información Adicional (Opcional) -->
       <div class="mt-16 max-w-2xl text-center text-gray-700">
           <h3 class="text-2xl font-bold text-gray-900 mb-4">Programación Destacada</h3>
           <p>Lunes a Viernes: 7:00 AM - Devocional Matutino</p>
@@ -46,9 +76,5 @@ import MainLayout from '../layouts/MainLayout.astro';
 </section>
 
 <style>
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fadeInUp { animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1) both; }
+/* Animations and custom scrollbar styles are now defined in the components or can be global */
 </style> 
