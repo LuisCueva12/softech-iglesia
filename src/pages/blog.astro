@@ -6,7 +6,22 @@ import CategoriasBlog from '../components/blog/CategoriasBlog.astro';
 ---
 
 <MainLayout>
-	<HeroBlog/>
-	<ListaPosts/>
-	<CategoriasBlog/>
+	<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+		<HeroBlog />
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+				<!-- Main Content -->
+				<div class="lg:col-span-8">
+					<ListaPosts />
+				</div>
+				
+				<!-- Sidebar -->
+				<div class="lg:col-span-4">
+					<div class="sticky top-8">
+						<CategoriasBlog />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </MainLayout>
