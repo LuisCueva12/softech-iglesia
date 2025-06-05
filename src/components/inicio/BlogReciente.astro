@@ -6,34 +6,70 @@ const posts = [
     date: "2025-05-15",
     summary: "Celebramos con alegría la inauguración de nuestra nueva capilla, un espacio para la comunidad y la fe.",
     slug: "inauguracion-nueva-capilla",
+    imagen: "/images/blog/capilla.webp"
   },
   {
     title: "Jornada de ayuda social",
     date: "2025-04-30",
     summary: "Participa en nuestra jornada de ayuda social para apoyar a familias necesitadas en la región.",
     slug: "jornada-ayuda-social",
+    imagen: "/images/blog/ayuda-social.webp"
   },
   {
     title: "Conferencia espiritual 2025",
     date: "2025-06-10",
     summary: "No te pierdas la conferencia espiritual con nuestro pastor invitado, un evento para fortalecer la fe.",
     slug: "conferencia-espiritual-2025",
+    imagen: "/images/blog/conferencia.webp"
   },
 ];
 ---
 
-<section class="py-16 bg-white">
-  <div class="container mx-auto max-w-5xl px-6">
-    <h2 class="text-4xl font-bold mb-10 text-gray-900 text-center">Últimas Noticias</h2>
-    <div class="grid gap-8 md:grid-cols-3">
-      {posts.map(post => (
-        <article class="border rounded-lg shadow-md hover:shadow-lg transition p-6">
-          <h3 class="text-xl font-semibold mb-2">{post.title}</h3>
-          <p class="text-sm text-gray-500 mb-4">{new Date(post.date).toLocaleDateString('es-ES')}</p>
-          <p class="text-gray-700 mb-4">{post.summary}</p>
-          <a href={`/blog/${post.slug}`} class="text-indigo-600 hover:underline font-semibold">Leer más →</a>
-        </article>
-      ))}
+<section class="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative">
+  <!-- Patrón decorativo -->
+  <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px] pointer-events-none"></div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold mb-12 text-gray-900 text-center">
+        Últimas Noticias del Blog
+      </h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        {posts.map(post => (
+          <article class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden animate-fadeInUp">
+            <img 
+              src={post.imagen}
+              alt={post.title}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-gray-900">{post.title}</h3>
+              <p class="text-sm text-gray-600 mb-4 flex items-center">
+                <span class="material-icons text-sm mr-1">event</span>
+                {new Date(post.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              <p class="text-gray-700 mb-4">{post.summary}</p>
+              <a 
+                href={`/blog/${post.slug}`}
+                class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-300 group"
+              >
+                Leer más 
+                <span class="material-icons text-base ml-1 transform group-hover:translate-x-1 transition-transform duration-300">arrow_forward</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp { animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1) both; }
+.animate-fadeInUp:nth-child(1) { animation-delay: .1s; }
+.animate-fadeInUp:nth-child(2) { animation-delay: .2s; }
+.animate-fadeInUp:nth-child(3) { animation-delay: .3s; }
+</style>

@@ -3,32 +3,81 @@ const testimonios = [
   {
     nombre: "María López",
     texto: "La comunidad de esta iglesia me ayudó a encontrar paz y propósito en mi vida. Gracias por su amor y apoyo.",
-    imagen: "/uploads/maria-lopez.jpg",
+    imagen: "/images/placeholder-avatar.webp",
+    color: "from-blue-400 to-blue-600"
   },
   {
     nombre: "Carlos Sánchez",
     texto: "Los programas y actividades me han fortalecido espiritual y personalmente. Un lugar lleno de esperanza.",
-    imagen: "/uploads/carlos-sanchez.jpg",
+    imagen: "/images/placeholder-avatar.webp",
+    color: "from-purple-400 to-purple-600"
   },
   {
     nombre: "Ana Pérez",
     texto: "Me siento bendecida por formar parte de esta familia que siempre está dispuesta a ayudar y acompañar.",
-    imagen: "/uploads/ana-perez.jpg",
+    imagen: "/images/placeholder-avatar.webp",
+    color: "from-green-400 to-green-600"
   },
 ];
 ---
 
-<section class="bg-indigo-50 py-16">
-  <div class="container mx-auto max-w-6xl px-6">
-    <h2 class="text-4xl font-bold mb-12 text-center text-indigo-900">Testimonios de Nuestra Comunidad</h2>
-    <div class="grid gap-10 md:grid-cols-3">
-      {testimonios.map(({ nombre, texto, imagen }) => (
-        <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition">
-          <img src={imagen} alt={`Foto de ${nombre}`} class="w-24 h-24 rounded-full mb-4 object-cover" />
-          <p class="text-gray-700 italic mb-4">&ldquo;{texto}&rdquo;</p>
-          <h3 class="font-semibold text-lg text-indigo-800">{nombre}</h3>
-        </div>
-      ))}
+<section class="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative">
+  <!-- Patrón decorativo -->
+  <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px] pointer-events-none"></div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold mb-12 text-gray-900 text-center">
+        Testimonios de Transformación
+      </h2>
+      
+      <div class="grid gap-10 md:grid-cols-3">
+        {testimonios.map(({ nombre, texto, imagen, color }) => (
+          <div class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 p-8 flex flex-col items-center text-center animate-fadeInUp">
+            <!-- Icono de cita -->
+            <div class={`w-16 h-16 rounded-full bg-gradient-to-br ${color} flex items-center justify-center mb-6`}>
+                <span class="material-icons text-white text-3xl">format_quote</span>
+            </div>
+            
+            <p class="text-gray-700 italic mb-6 text-lg leading-relaxed">&ldquo;{texto}&rdquo;</p>
+            
+            <img 
+              src={imagen} 
+              alt={`Foto de ${nombre}`} 
+              class="w-16 h-16 rounded-full mb-4 object-cover border-4 border-white shadow-md"
+            />
+            
+            <h3 class="font-bold text-lg text-gray-900">{nombre}</h3>
+          </div>
+        ))}
+      </div>
+
+      <!-- Call to action para compartir testimonio -->
+      <div class="mt-20 text-center">
+        <h3 class="text-3xl font-bold text-gray-900 mb-6">¿Tienes una historia para compartir?</h3>
+        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+          Tu testimonio puede inspirar a otros. Nos encantaría escuchar cómo Dios ha obrado en tu vida.
+        </p>
+        <a 
+          href="/contacto" 
+          class="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300 shadow-lg font-medium text-lg"
+        >
+          <span class="material-icons mr-2">edit</span>
+          Comparte tu Testimonio
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp { animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1) both; }
+.animate-fadeInUp:nth-child(1) { animation-delay: .1s; }
+.animate-fadeInUp:nth-child(2) { animation-delay: .2s; }
+.animate-fadeInUp:nth-child(3) { animation-delay: .3s; }
+</style>

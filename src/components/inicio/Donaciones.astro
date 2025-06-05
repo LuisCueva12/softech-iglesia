@@ -1,78 +1,42 @@
 ---
-const bancos = [
-  {
-    nombre: "Banco de Crédito del Perú (BCP)",
-    tipo: "Cuenta Corriente",
-    moneda: "S/ (Soles)",
-    numero: "123-4567890-0-12",
-    titular: "Iglesia Ejemplo",
-  },
-  {
-    nombre: "Banco Interbank",
-    tipo: "Cuenta de Ahorros",
-    moneda: "S/ (Soles)",
-    numero: "098-7654321-0",
-    titular: "Iglesia Ejemplo",
-  },
-];
+// Remove banco and otrosMetodos arrays as they are no longer needed for display
 ---
 
-<section class="text-dark py-8 px-6">
-  <div class="container mx-auto max-w-5xl">
-    <h2 class="text-2xl font-bold mb-6 text-center">Apoya Nuestra Misión</h2>
-    <p class="mb-8 text-center text-sm md:text-base max-w-xl mx-auto">
-      Dona fácilmente con los siguientes métodos de pago seguros y rápidos.
-    </p>
+<section class="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative">
+  <!-- Patrón decorativo -->
+  <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px] pointer-events-none"></div>
 
-    <div class="flex flex-wrap justify-center gap-10 mb-8 text-left">
-      <div class="flex flex-col items-center w-36">
-        <h3 class="font-semibold mb-1 flex items-center gap-2 text-lg">
-          <span class="text-3xl">📱</span> Yape
-        </h3>
-        <p class="text-sm font-mono">987 654 321</p>
-        <p class="text-xs opacity-80">Iglesia Ejemplo</p>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <!-- Encabezado -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Apoya Nuestra Misión
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Tu generosidad nos permite seguir impactando vidas y comunidades. Dona fácilmente escaneando nuestro código QR.
+        </p>
       </div>
 
-      <div class="flex flex-col items-center w-36">
-        <h3 class="font-semibold mb-1 flex items-center gap-2 text-lg">
-          <span class="text-3xl">💸</span> Plin
-        </h3>
-        <p class="text-sm font-mono">987 654 322</p>
-        <p class="text-xs opacity-80">Iglesia Ejemplo</p>
-      </div>
-
-      {
-        bancos.map((banco) => (
-          <div class="flex flex-col items-center w-44">
-            <h3 class="font-semibold mb-1 text-center">{banco.nombre}</h3>
-            <p class="text-xs opacity-80 mb-1 text-center">
-              {banco.tipo} - {banco.moneda}
-            </p>
-            <p class="text-sm font-mono text-center">{banco.numero}</p>
-            <p class="text-xs opacity-80 text-center">{banco.titular}</p>
-          </div>
-        ))
-      }
-
-      <div class="flex flex-col items-center w-36">
-        <h3 class="font-semibold mb-1 flex items-center gap-2 text-lg">
-          <span class="text-3xl">💳</span> Tarjetas
-        </h3>
-        <p class="text-sm text-center">PayPal, MercadoPago, etc.</p>
-      </div>
-    </div>
-
-    <div class="flex justify-center">
-      <div>
-        <h4 class="text-lg font-semibold mb-2 text-center">
-          Escanea nuestro QR
-        </h4>
-        <img
+      <!-- QR Section -->
+      <div class="text-center bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl p-10 max-w-sm mx-auto animate-fadeInUp">
+         <h4 class="text-2xl font-bold text-gray-900 mb-6">Escanea para Donar</h4>
+         <img
           src="/images/vistas/codigo_qr.png"
           alt="QR Donación"
-          class="mx-auto w-50 h-50 object-contain rounded-md shadow-md"
+          class="mx-auto w-48 h-48 object-contain rounded-xl shadow-md border-4 border-white"
         />
+        <p class="text-gray-600 text-sm mt-4">Compatible con Yape, Plin y otras billeteras digitales.</p>
       </div>
+
     </div>
   </div>
 </section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp { animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1) both; }
+</style>
