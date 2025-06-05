@@ -1,0 +1,54 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Radio en Vivo">
+  <section class="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative min-h-screen">
+    <!-- Patrón decorativo -->
+    <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px] pointer-events-none"></div>
+
+    <div class="container mx-auto px-6 relative z-10 flex flex-col items-center">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Radio en Vivo</h1>
+        <p class="text-xl text-gray-600">Sintoniza nuestra programación las 24 horas</p>
+      </div>
+
+      <!-- Reproductor de Radio (Placeholder) -->
+      <div class="w-full max-w-xl bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl p-8 text-center animate-fadeInUp">
+        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-6">
+          <span class="material-icons text-white text-5xl">radio</span>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Señal en Vivo</h3>
+        
+        <!-- Aquí iría el código del reproductor de audio, por ejemplo, un iframe -->
+        <div class="bg-gray-200 h-32 rounded-xl flex items-center justify-center text-gray-600 italic">
+          [Espacio para el reproductor de audio en vivo]
+        </div>
+
+        <p class="text-gray-700 mt-6 mb-4">Escúchanos desde cualquier dispositivo.</p>
+
+        <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300 shadow-lg font-medium">
+          <span class="material-icons mr-2">volume_up</span>
+          Abrir Reproductor Externo
+        </a>
+      </div>
+
+      <!-- Información Adicional (Opcional) -->
+      <div class="mt-16 max-w-2xl text-center text-gray-700">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Programación Destacada</h3>
+          <p>Lunes a Viernes: 7:00 AM - Devocional Matutino</p>
+          <p>Domingos: 10:00 AM - Servicio Principal</p>
+          <p class="mt-4 text-sm">Consulta el horario completo en nuestra sección de actividades.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp { animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1) both; }
+</style> 

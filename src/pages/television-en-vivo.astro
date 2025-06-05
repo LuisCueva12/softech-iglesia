@@ -1,0 +1,62 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Televisión en Vivo">
+  <section class="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative min-h-screen">
+    <!-- Patrón decorativo -->
+    <div class="absolute inset-0 bg-[linear-gradient(45deg,_transparent_25%,_rgba(59,130,246,0.03)_25%,_rgba(59,130,246,0.03)_50%,_transparent_50%,_transparent_75%,_rgba(59,130,246,0.03)_75%)] bg-[length:20px_20px] pointer-events-none"></div>
+
+    <div class="container mx-auto px-6 relative z-10 flex flex-col items-center">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Televisión en Vivo</h1>
+        <p class="text-xl text-gray-600">Mira nuestros servicios y programas en directo</p>
+      </div>
+
+      <!-- Reproductor de Televisión (YouTube Embed) -->
+      <div class="w-full max-w-3xl bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl p-4 md:p-8 text-center animate-fadeInUp">
+        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center mb-6">
+          <span class="material-icons text-white text-5xl">live_tv</span>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Señal en Vivo</h3>
+        
+        <!-- Aquí iría el código del reproductor de video de YouTube -->
+        <div class="relative overflow-hidden rounded-xl w-full" style="padding-top: 56.25%">
+          <iframe 
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+            allowfullscreen 
+            loading="lazy" 
+            class="absolute top-0 left-0 w-full h-full border-0"
+          ></iframe>
+        </div>
+
+        <p class="text-gray-700 mt-6 mb-4">Míranos desde cualquier dispositivo.</p>
+
+        <!-- Puedes mantener un botón si ofreces otra opción o enlace -->
+        <!-- 
+        <a href="#" class="inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors duration-300 shadow-lg font-medium">
+          <span class="material-icons mr-2">play_circle_filled</span>
+          Abrir en YouTube
+        </a>
+         -->
+      </div>
+
+      <!-- Información Adicional (Opcional) -->
+      <div class="mt-16 max-w-2xl text-center text-gray-700">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Próximas Transmisiones</h3>
+          <p>Domingos 10:00 AM - Servicio Principal</p>
+          <p>Miércoles 7:00 PM - Estudio Bíblico</p>
+          <p class="mt-4 text-sm">Consulta el horario completo en nuestra sección de actividades.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp { animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1) both; }
+</style> 
